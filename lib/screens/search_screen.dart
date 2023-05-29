@@ -170,7 +170,7 @@ class SearchScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                  width: 18,
+                                  width: AppLayout.getWidth(18.0),
                                   color: const Color(0xFF189999)
                               ),
                               color: Colors.transparent
@@ -201,15 +201,15 @@ class SearchScreen extends StatelessWidget {
                             text: const TextSpan(
                               children: [
                                 TextSpan(
-                                  text: 'emoji1',
+                                  text: '😍',
                                   style: TextStyle(fontSize: 38)
                                 ),
                                 TextSpan(
-                                  text: 'emoji2',
+                                  text: '🥰',
                                   style: TextStyle(fontSize: 50)
                                 ),
                                 TextSpan(
-                                  text: 'emoji3',
+                                  text: '😘',
                                   style: TextStyle(fontSize: 38)
                                 ),
                               ]
