@@ -25,7 +25,9 @@ class _BottomBarNavState extends State<BottomBarNav> {
     int selectedScreen = 0;
     //Function to navigate
     void navigate(int index) {
-      selectedScreen = index;
+      setState(() {
+        selectedScreen = index;
+      });
     }
 
     return Scaffold(

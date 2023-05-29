@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class Styles{
   static Color primaryColor = const Color(0xFF687DAF);
-  static Color textColor = const Color(0xff3B3B3B);
+  static Color textColor = const Color(0xFF3B3B3B);
   static Color bgColor = const Color(0xFFEEEDF2);
+  static Color searchBoxColor = const Color(0xFFEEEDF2);
+  static Color buttonColor = const Color(0xD91130CE);
   static Color topConColor = const Color(0xFF526799);
   static Color bottomConColor = const Color(0xFFF37B67);
   static Color khakiColor = const Color(0xFFD2BDB6);

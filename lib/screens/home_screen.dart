@@ -1,8 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ticket_booking_app/utils/app_info_list.dart';
 import 'package:ticket_booking_app/views/hotel_view.dart';
+import 'package:ticket_booking_app/widgets/view_all_widget.dart';
+import '../utils/app_layout.dart';
 import '../utils/app_styles.dart';
 import '../views/ticket_view.dart';
 
@@ -40,8 +41,8 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     Container(
-                      height: 50,
-                      width: 50,
+                      height: AppLayout.getHeight(50.0),
+                      width: AppLayout.getHeight(50.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: const DecorationImage(
@@ -76,65 +77,25 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const Gap(40),
                 //Third Row Widget(Upcoming Flight)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Upcoming Flights',
-                      style: Styles.headLineStyle2
-                    ),
-                    InkWell( //Clickable widget like gesture detector
-                        onTap: () {
-                          if (kDebugMode) {
-                            print('You tap me!');
-                          }
-                        },
-                        child: Text(
-                          'view all',
-                          style: Styles.textStyle.copyWith(color: Styles.primaryColor),
-                        )
-                    ),
-                  ],
-                )
+                const ViewAllWidget(bigText: 'Upcoming Flights', smallText: 'View all',)
               ],
             ),
           ),
           const Gap(15),
           //Second Column container
-          const SingleChildScrollView(
+          SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.only(left: 20.0),
+            padding: const EdgeInsets.only(left: 20.0),
             //reverse: true,
             child: Row(
-              children: [
-                TicketView(),
-                TicketView(),
-              ],
+              children: ticketList.map((tickets) => TicketView(ticket: tickets,)).toList()
             ),
           ),
           const Gap(15),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                    'Hotels',
-                    style: Styles.headLineStyle2
-                ),
-                InkWell( //Clickable widget like gesture detector
-                    onTap: () {
-                      if (kDebugMode) {
-                        print('You tap me!');
-                      }
-                    },
-                    child: Text(
-                      'view all',
-                      style: Styles.textStyle.copyWith(color: Styles.primaryColor),
-                    )
-                ),
-              ],
-            ),
+              //Row Widget for (Hotels list)
+            child: const ViewAllWidget(bigText: 'Hotels', smallText: 'View all',)
           ),
           const Gap(15),
           SingleChildScrollView(
@@ -150,7 +111,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-//Todos
-//Navigation isn't working properly
-//Give padding to hotel ui containers
