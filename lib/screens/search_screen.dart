@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ticket_booking_app/utils/app_layout.dart';
 import 'package:ticket_booking_app/utils/app_styles.dart';
+import 'package:ticket_booking_app/widgets/ticket_tabs.dart';
 import 'package:ticket_booking_app/widgets/view_all_widget.dart';
 import '../widgets/flight_widget.dart';
 
@@ -14,7 +15,6 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Styles.bgColor,
       body: ListView(
-        scrollDirection: Axis.vertical,
         padding: EdgeInsets.symmetric(
             horizontal: AppLayout.getWidth(20.0),
             vertical: AppLayout.getHeight(20.0)
@@ -22,69 +22,43 @@ class SearchScreen extends StatelessWidget {
         children: [
           Gap(AppLayout.getHeight(40.0)),
           //Leading text
-          Text(
-            'What are\nyou looking for?',
-            style: Styles.headLineStyle1.copyWith(fontSize: 35),
-          ),
-          Gap(AppLayout.getHeight(20.0)),
+          Text('What are\nyou looking for?',style: Styles.headLineStyle1.copyWith(fontSize: AppLayout.getWidth(35.0)),),
+
+          Gap(AppLayout.getHeight(20.0)),//
           //Split Containers that house both 'Airline Ticket' and 'Hotels'
-          FittedBox(
-            child: Container(
-              padding: const EdgeInsets.all(3.5),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Styles.searchBoxColor
-              ),
-              child: Row(
-                children: [
-                  //Container for 'Airline Ticket'.
-                  Container(
-                    width: size.width * 44,
-                    padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(7.0)),
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.horizontal(left: Radius.circular(50)),
-                        color: Colors.white
-                    ),
-                    child: Center(child: Text('Airline Tickets',style: Styles.headLineStyle1,)),
-                  ),
-                  //Container for 'Hotels'.
-                  Container(
-                    width: size.width * 44,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.horizontal(right: Radius.circular(50)),
-                        color: Colors.transparent
-                    ),
-                    child: const Center(child: Text('Hotels')),
-                  )
-                ],
-              ),
-            ),
-          ),
+          const AppTicketsTab(firstTabText: 'Airline Tickets', secondTabText: 'Hotels',),
+
           Gap(AppLayout.getHeight(25.0)),
           //Reusable widget for flight status
           const FlightWidget(icon: Icons.flight_takeoff_rounded, text: 'Departure',),
+
           Gap(AppLayout.getHeight(20.0)),
+
           const FlightWidget(icon: Icons.flight_land_rounded, text: 'Arrival',),
+
           Gap(AppLayout.getHeight(25.0)),
-          //Blue Button
+          //Blue find flight Button
           Container(
             padding: EdgeInsets.symmetric(
-                vertical: AppLayout.getHeight(18.0),
-                horizontal: AppLayout.getWidth(16.0)
+                vertical: AppLayout.getWidth(18.0),
+                horizontal: AppLayout.getWidth(15.0)
             ),
-            color: Styles.buttonColor,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0)
+                borderRadius: BorderRadius.circular(AppLayout.getWidth(10.0)),
+                color: Styles.buttonColor,
             ),
             child: Center(
                 child: Text(
                   'Find Tickets',
-                  style: Styles.textStyle.copyWith(color: Colors.white, fontSize: 20),
+                  style: Styles.textStyle.copyWith(color: Colors.white, fontSize: AppLayout.getWidth(20.0)),
                 )
             ),
           ),
+
           Gap(AppLayout.getHeight(40.0)),
+          //View all reusable widget
           const ViewAllWidget(bigText: 'Upcoming Flights', smallText: 'View all'),
+
           Gap(AppLayout.getHeight(15.0)),
           //Row for the last UI children wrapper.
           Row(
@@ -92,26 +66,26 @@ class SearchScreen extends StatelessWidget {
             children: [
               //Row first child with two children {Container and Text}
               Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: AppLayout.getHeight(15.0),
-                  vertical: AppLayout.getWidth(15.0)
-                ),
-                height: AppLayout.getHeight(425),
+                height: AppLayout.getHeight(425.0),
                 width: size.width * 0.42,
+                padding: EdgeInsets.symmetric(
+                    horizontal: AppLayout.getHeight(15.0),
+                    vertical: AppLayout.getWidth(15.0)
+                ),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(AppLayout.getHeight(20.0)),
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.grey.shade300,
-                          blurRadius: 1,
-                          spreadRadius: 2.0
+                          color: Colors.grey.shade200,
+                          blurRadius: 1.0,
+                          spreadRadius: 1.0
                       )
                     ]
                 ),
                 child: Column(
                   children: [
-                    //Container child
+                    //Container child for image
                     Container(
                       height: AppLayout.getHeight(190.0),
                       decoration: BoxDecoration(
@@ -122,16 +96,17 @@ class SearchScreen extends StatelessWidget {
                         )
                       ),
                     ),
+
                     Gap(AppLayout.getHeight(12.0)),
                     //Text Child
                     Text(
-                      "20% discount on early bookings of this flights. Don't miss out this great opportunity",
-                      style: Styles.headLineStyle2,
-                      overflow: TextOverflow.ellipsis,
+                      "20% discount on early bookings of this flights. Don't miss.",
+                      style: Styles.headLineStyle2
                     )
                   ],
                 ),
               ),
+
               Gap(AppLayout.getWidth(20.0)),
               //Row second child with two Container children
               Column(
@@ -140,11 +115,11 @@ class SearchScreen extends StatelessWidget {
                   Stack(
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(15.0), horizontal: AppLayout.getWidth(15.0)),
-                        height: AppLayout.getHeight(210.0),
                         width: size.width * 0.44,
+                        height: AppLayout.getHeight(200.0),
+                        padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(15.0), horizontal: AppLayout.getHeight(15.0)),
                         decoration: BoxDecoration(
-                            color: const Color(0xFF3ABBBB),
+                            color: const Color(0xFF3AB8B8),
                             borderRadius: BorderRadius.circular(AppLayout.getHeight(18.0))
                         ),
                         child: Column(
@@ -162,6 +137,7 @@ class SearchScreen extends StatelessWidget {
                           ],
                         ),
                       ),
+
                       Positioned(
                         right: -45.0,
                         top: -40.0,
@@ -170,7 +146,7 @@ class SearchScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                  width: AppLayout.getWidth(18.0),
+                                  width: 18,
                                   color: const Color(0xFF189999)
                               ),
                               color: Colors.transparent
@@ -179,11 +155,13 @@ class SearchScreen extends StatelessWidget {
                       )
                     ]
                   ),
+
                   Gap(AppLayout.getHeight(15.0)),
+
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(15.0), horizontal: AppLayout.getWidth(15.0)),
-                    height: AppLayout.getHeight(210.0),
                     width: size.width * 0.44,
+                    height: AppLayout.getHeight(210.0),
+                    padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(15.0), horizontal: AppLayout.getWidth(15.0)),
                     decoration: BoxDecoration(
                         color: const Color(0xFFEC6545),
                         borderRadius: BorderRadius.circular(AppLayout.getHeight(18.0))
@@ -193,10 +171,11 @@ class SearchScreen extends StatelessWidget {
                       children: [
                         Text(
                           'Take love',
-                          style: Styles.headLineStyle2.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
+                          style: Styles.headLineStyle2.copyWith(color: Colors.white, fontWeight: FontWeight.bold)
                         ),
+
                         Gap(AppLayout.getHeight(5.0)),
+
                         RichText(
                             text: const TextSpan(
                               children: [
@@ -227,4 +206,3 @@ class SearchScreen extends StatelessWidget {
     );
   }
 }
-

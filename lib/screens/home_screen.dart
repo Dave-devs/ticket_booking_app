@@ -1,3 +1,4 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ticket_booking_app/utils/app_info_list.dart';
@@ -16,30 +17,30 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Styles.bgColor,
       body: ListView(
         children: [
-          //First Column container
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            //First Column container
             child: Column(
               children: [
-                const Gap(35),
+                const Gap(40),
                 //First Row Widget
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    //Top text column
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                            'Good Morning',
-                          style: Styles.headLineStyle3,
+                            'Good Morning',style: Styles.headLineStyle3,
                         ),
                         const Gap(5),
                         Text(
-                            'Book Ticket',
-                          style: Styles.headLineStyle1
+                            'Book Tickets',style: Styles.headLineStyle1
                         ),
                       ],
                     ),
+                    //Top small image container
                     Container(
                       height: AppLayout.getHeight(50.0),
                       width: AppLayout.getHeight(50.0),
@@ -53,25 +54,19 @@ class HomeScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                const Gap(15),
+                const Gap(25),
                 //Second Row Widget(Search Bar)
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: const Color(0xFFF4F6FD)
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
                   child: Row(
                     children: [
-                      const Icon(
-                        Icons.search,
-                        color: Colors.black45,
-                      ),
+                      const Icon(FluentSystemIcons.ic_fluent_search_regular, color: Colors.black45,),
                       const Gap(25),
-                      Text(
-                          'Search...',
-                        style: Styles.headLineStyle4.copyWith(color: Colors.black45),
-                      )
+                      Text('Search...',style: Styles.headLineStyle4.copyWith(color: Colors.black45),)
                     ],
                   ),
                 ),
@@ -81,28 +76,34 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
+
           const Gap(15),
+
           //Second Column container
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.only(left: 20.0),
             //reverse: true,
             child: Row(
-              children: ticketList.map((tickets) => TicketView(ticket: tickets,)).toList()
+              children: ticketList.map((singleTicket) => TicketView(ticket: singleTicket,)).toList()
             ),
           ),
+
           const Gap(15),
+
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
               //Row Widget for (Hotels list)
             child: const ViewAllWidget(bigText: 'Hotels', smallText: 'View all',)
           ),
+
           const Gap(15),
+
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.only(left: 20.0),
             child: Row(
-              //*Mapped hotelList to a single map hotel declared in Hotel View class the we reference it here.
+              //Mapped hotelList to a single map hotel declared in Hotel View class the we reference it here.
               children: hotelList.map((singleHotel) => HotelView(hotel: singleHotel)).toList(),
             ),
           )

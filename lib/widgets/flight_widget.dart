@@ -16,9 +16,9 @@ class FlightWidget extends StatelessWidget {
           vertical: AppLayout.getHeight(12.0),
           horizontal: AppLayout.getWidth(12.0)
       ),
-      color: Colors.white,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0)
+          borderRadius: BorderRadius.circular(AppLayout.getWidth(10.0)),
+          color: Colors.white,
       ),
       child: Row(
         children: [

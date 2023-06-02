@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class AppLayout{
+  //Size calculator
   static getSize(BuildContext context) {
     return MediaQuery.of(context).size;
   }

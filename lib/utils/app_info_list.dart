@@ -60,7 +60,7 @@ List<Map<String, dynamic>> ticketList = [
     'flying_time': '3H:00M',
     'date': '22 MAY',
     'departure_time': '09:00 PM',
-    'number': 5
+    'number': 35
   },
   {
     'from': {
@@ -75,7 +75,7 @@ List<Map<String, dynamic>> ticketList = [
     'flying_time': '5H:30M',
     'date': '3 MAY',
     'departure_time': '11:00 AM',
-    'number': 7
+    'number': 21
   },
   {
     'from': {
@@ -105,6 +105,6 @@ List<Map<String, dynamic>> ticketList = [
     'flying_time': '9H:40M',
     'date': '1 JUNE',
     'departure_time': '22:00 PM',
-    'number': 5
+    'number': 81
   },
 ];
